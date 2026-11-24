@@ -1,0 +1,9 @@
+Project Kickoff Notes
+
+Date: November 24, 2026
+Team: Ajaia Engineering
+
+Action Items:
+1. Finalize rich-text formatting (Bold, Italic, Underline, Headings, Lists).
+2. Verify document sharing between Alice, Bob, and Charlie.
+3. Deploy the live application to Vercel.

@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ajaia Docs — Lightweight Collaborative Document Editor
 
-## Getting Started
+A full-stack collaborative document editor inspired by Google Docs, built with **Next.js (App Router)**, **TypeScript**, **Tiptap**, **Prisma**, and **PostgreSQL (Supabase)**.
 
-First, run the development server:
+## Features
+- **Document Creation & Rich-Text Editing:** Create, rename, edit, delete, and auto-save documents with Bold, Italic, Underline, H1/H2 headings, Bulleted/Numbered lists, and Undo/Redo.
+- **File Upload (`.txt` & `.md`):** Import `.txt` or `.md` files (max 2 MB) directly into new editable documents. Markdown is parsed into formatted rich text; plain text is HTML-escaped to prevent XSS.
+- **Sharing & Role-Based Access:** Document owners can grant or revoke `EDITOR` or `VIEWER` access by email. The dashboard clearly separates **My Documents** from **Shared With Me**.
+- **Persistence:** All documents, formatting (HTML), and sharing permissions persist in PostgreSQL via Prisma.
+- **Automated Tests:** Unit tests with Vitest covering access-control rules and file-upload parsing/security.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Seeded Test Accounts
+Use the account switcher in the top-right corner of the dashboard to test sharing flows immediately (no password required):
+- `alice@ajaia.dev` (Alice Chen) — Owns the starter document **Q4 Product Roadmap**
+- `bob@ajaia.dev` (Bob Patel) — Has `EDITOR` access to Alice's starter document
+- `charlie@ajaia.dev` (Charlie Kim) — Clean account for testing new shares (`VIEWER` or `EDITOR`)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Supported File Types
+- `.txt` (Plain text, max 2 MB)
+- `.md` (Markdown, max 2 MB)
+- Other file types are rejected with a clear validation error.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Local Setup & Run Instructions
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Prerequisites
+- Node.js 20+
+- A PostgreSQL database URL (e.g., Supabase, Neon, or local Postgres)
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Steps
+1. **Install dependencies:**
+   ```bash
+   npm install
